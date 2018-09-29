@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block EXTCSS %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>购物车</title>
+{% endblock %}
+
+{% block content %}
+    <div class="cart">
+        <ul>
+            {% for cart in carts %}
+                <li>
+                    <div class="confirm-wrapper" cartid="{{ cart.id }}" isselect="{{ cart.isselect }}">
+                        {% if cart.isselect %}
+                            <span class="glyphicon glyphicon-ok"></span>
+                        {% else %}
+                            <span class="no"></span>
+                        {% endif %}
+                    </div>
+                    <div class="content-wrapper">
+                        <div class="img">
+                            <img src="{{ cart.goods.productimg }}">
+                        </div>
+                        <div class="detail">
+                            <p class="name">{{ cart.goods.productlongname }}</p>
+                            <p class="price">¥{{ cart.goods.price }}</p>
+                            <p class="num">X{{ cart.goodnumber }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="bill">
+            <div class="bill-left">
+                <div class="all" isall="false">
+                    <span class="no"></span>
+                    <b>全选</b>
+                </div>
+                <div class="total">
+                    <span>总计¥:</span>
+                    <b>0</b>
+                </div>
+            </div>
+            <div class="bill-right">
+                计算(<span>0</span>)
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block EXTJS %}
+    <script src="{% static 'cart/js/cart.js' %}"></script>
+{% endblock %}

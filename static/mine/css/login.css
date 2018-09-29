@@ -1,0 +1,21 @@
+.login .err{
+    color: red;
+}
+
+.login form{
+    padding: 0 1rem;
+}
+.login form .input-group{
+    margin: 0.5rem 0;
+}
+
+.login .back{
+    text-align: right;
+}
+.login .back a{
+    font-size: 1.5rem;
+}
+
+#btn1{
+    width: 100%;
+}
